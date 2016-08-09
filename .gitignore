@@ -1,0 +1,8 @@
+.idea/
+.vagrant/
+public/assets
+public/cms
+public/framework
+public/reports
+public/siteconfig/
+public/vendor/

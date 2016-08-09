@@ -1,0 +1,29 @@
+---
+server:
+    install: '1'
+    packages: [vim, git, nodejs, npm]
+    timezone: Pacific/Auckland
+    locale: en_US.UTF-8
+vagrant_local:
+    install: '1'
+    vm: { base_box: trusty64, hostname: webserver, ip: 192.168.120.24, memory: '1024', sharedfolder: ./public/, syncType: '0' }
+apache:
+    install: '1'
+    docroot: /vagrant
+    servername: webserver
+mysql:
+    install: '1'
+    root_password: root
+    database: db
+    user: root
+    password: root
+    dump: ''
+php:
+    install: '1'
+    ppa: php5-5.6
+    packages: [php5-gd, php5-curl, php5-tidy, php5-mysql]
+xdebug:
+    install: '1'
+composer:
+    install: '1'
+
