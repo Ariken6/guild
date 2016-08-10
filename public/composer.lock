@@ -4,9 +4,87 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a34315185456266be4a34eda5437e739",
-    "content-hash": "057a792e448c25eb9dd3ea1bb5c83b14",
+    "hash": "863a75e239d0e6c392d25ae6507d8ec1",
+    "content-hash": "169eb203d9269240b62ae375d13bdbf1",
     "packages": [
+        {
+            "name": "assertchris/hash-compat",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/assertchris/hash-compat.git",
+                "reference": "085131ed20472cf0716b969890d38e7ed2c8ccb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/assertchris/hash-compat/zipball/085131ed20472cf0716b969890d38e7ed2c8ccb0",
+                "reference": "085131ed20472cf0716b969890d38e7ed2c8ccb0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/hash.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Pitt",
+                    "email": "cgpitt@gmail.com"
+                }
+            ],
+            "description": "Provides forward compatibility with the hash_* functions that ship with PHP 5.5",
+            "time": "2015-05-05 23:42:48"
+        },
+        {
+            "name": "colymba/gridfield-bulk-editing-tools",
+            "version": "v2.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colymba/GridFieldBulkEditingTools.git",
+                "reference": "29482dbd17e42c3de364aa3d46d20ba65175c9d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colymba/GridFieldBulkEditingTools/zipball/29482dbd17e42c3de364aa3d46d20ba65175c9d3",
+                "reference": "29482dbd17e42c3de364aa3d46d20ba65175c9d3",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": ">=3.1"
+            },
+            "type": "silverstripe-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD Simplified"
+            ],
+            "authors": [
+                {
+                    "name": "Thierry Francois",
+                    "homepage": "http://colymba.com"
+                },
+                {
+                    "name": "GitHub contributors",
+                    "homepage": "https://github.com/colymba/GridFieldBulkEditingTools/contributors"
+                }
+            ],
+            "description": "SilverStripe 3 GridField component to upload images and edit records in bulk",
+            "homepage": "https://github.com/colymba/GridFieldBulkEditingTools",
+            "keywords": [
+                "Image upload",
+                "bulk upload",
+                "gridfield bulk upload",
+                "silverstripe"
+            ],
+            "time": "2016-04-11 19:31:21"
+        },
         {
             "name": "composer/installers",
             "version": "v1.1.0",
@@ -146,6 +224,59 @@
             "time": "2015-04-09 03:18:37"
         },
         {
+            "name": "silverstripe/blog",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-blog.git",
+                "reference": "b5e1d191ce4997b77c6a8eddac8d7f99a5ad3d84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-blog/zipball/b5e1d191ce4997b77c6a8eddac8d7f99a5ad3d84",
+                "reference": "b5e1d191ce4997b77c6a8eddac8d7f99a5ad3d84",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/cms": "^3.1.0",
+                "silverstripe/lumberjack": "~1.1",
+                "silverstripe/tagfield": "^1.0"
+            },
+            "replace": {
+                "micmania1/silverstripe-blog": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7@stable"
+            },
+            "suggest": {
+                "silverstripe/comments": "This module adds comments to your blog.",
+                "silverstripe/widgets": "Some widgets come with the blog which are compatible with the widgets module."
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Strong",
+                    "email": "github@michaelstrong.co.uk"
+                }
+            ],
+            "description": "A fresh take on blogging in Silverstripe set out to tackle the issue of a cluttered Site Tree.",
+            "keywords": [
+                "blog",
+                "news",
+                "silverstripe"
+            ],
+            "time": "2016-05-18 05:01:49"
+        },
+        {
             "name": "silverstripe/cms",
             "version": "3.4.0",
             "source": {
@@ -200,6 +331,55 @@
             "time": "2016-06-02 05:07:41"
         },
         {
+            "name": "silverstripe/comments",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-comments.git",
+                "reference": "93ddc3cc0872ee9d3114ec5a3c7c1e6da74d3b5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-comments/zipball/93ddc3cc0872ee9d3114ec5a3c7c1e6da74d3b5f",
+                "reference": "93ddc3cc0872ee9d3114ec5a3c7c1e6da74d3b5f",
+                "shasum": ""
+            },
+            "require": {
+                "assertchris/hash-compat": "~1.0",
+                "colymba/gridfield-bulk-editing-tools": "~2.1",
+                "silverstripe/framework": "~3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7@stable"
+            },
+            "suggest": {
+                "ezyang/htmlpurifier": "Standards compliant HTML filter written in PHP",
+                "silverstripe/cms": "The SilverStripe Content Management System"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Will Rossiter",
+                    "email": "will@fullscreen.io"
+                }
+            ],
+            "description": "This module provides commenting functionality for Pages and other DataObjects on your SilverStripe site.",
+            "keywords": [
+                "comments",
+                "silverstripe"
+            ],
+            "time": "2016-05-18 05:03:24"
+        },
+        {
             "name": "silverstripe/framework",
             "version": "3.4.0",
             "source": {
@@ -252,6 +432,40 @@
                 "silverstripe"
             ],
             "time": "2016-06-02 22:59:29"
+        },
+        {
+            "name": "silverstripe/lumberjack",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-lumberjack.git",
+                "reference": "861bdd7e4ec84e16296343b0958461ebd78110d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-lumberjack/zipball/861bdd7e4ec84e16296343b0958461ebd78110d0",
+                "reference": "861bdd7e4ec84e16296343b0958461ebd78110d0",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/cms": ">=3.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7@stable"
+            },
+            "type": "silverstripe-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Strong",
+                    "email": "mstrong@silverstripe.org"
+                }
+            ],
+            "description": "A module to make managing pages in a GridField easy without losing any of the functionality that you're used to in the CMS.",
+            "time": "2016-05-18 22:30:50"
         },
         {
             "name": "silverstripe/reports",
@@ -344,6 +558,88 @@
                 "siteconfig"
             ],
             "time": "2016-06-02 05:07:41"
+        },
+        {
+            "name": "silverstripe/tagfield",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe-labs/silverstripe-tagfield.git",
+                "reference": "35773d4a5629569170034f4425f4a6884ef18a56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-tagfield/zipball/35773d4a5629569170034f4425f4a6884ef18a56",
+                "reference": "35773d4a5629569170034f4425f4a6884ef18a56",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "~3.1"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Pitt",
+                    "email": "chris@silverstripe.com",
+                    "homepage": "http://github.com/assertchris"
+                }
+            ],
+            "description": "Tag field for Silverstripe",
+            "keywords": [
+                "field",
+                "silverstripe",
+                "tag"
+            ],
+            "time": "2016-08-08 02:31:09"
+        },
+        {
+            "name": "undefinedoffset/sortablegridfield",
+            "version": "0.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UndefinedOffset/SortableGridField.git",
+                "reference": "05637b821651716951c3747cf93d1bc1280c3e96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/05637b821651716951c3747cf93d1bc1280c3e96",
+                "reference": "05637b821651716951c3747cf93d1bc1280c3e96",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*",
+                "silverstripe/framework": ">=3.0.1"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "installer-name": "sortablegridfield"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ed Chipman",
+                    "homepage": "http://www.edchipman.ca",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adds drag and drop functionality to SilverStripe 3.0's GridField",
+            "keywords": [
+                "gridfield",
+                "silverstripe"
+            ],
+            "time": "2016-06-09 17:24:20"
         }
     ],
     "packages-dev": [
