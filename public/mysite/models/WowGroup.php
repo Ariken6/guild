@@ -6,7 +6,7 @@
  * Date: 10/08/2016
  * Time: 9:34 PM
  */
-class WowGroup extends DataObject implements WowGroupInterface
+class WowGroup extends DataObject
 {
     private static $db = array(
         'Title' => 'Varchar(100)',
@@ -29,19 +29,21 @@ class WowGroup extends DataObject implements WowGroupInterface
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-
+        $fields->removeByName('Characters');
         $fields->dataFields()['DateTime']->getDateField()->setConfig('showcalendar', true);
+        $fields->addFieldToTab('Root.Main', TextField::create('Title', 'Name'));
 
-        $config = GridFieldConfig_RelationEditor::create();
-        $config->removeComponentsByType($config->getComponentByType('GridFieldAddNewButton'));
-        $characters = $this->getAvailableCharacters();
-        $config->getComponentByType('GridFieldAddExistingAutocompleter')->setSearchList($characters);
-        $config->addComponents(new GridFieldSortableRows('GroupOrder'));
-
-        $fields->addFieldsToTab('Root.Main', array(
-            TextField::create('Title', 'Name'),
-            GridField::create('Characters', 'Characters', $this->Characters(), $config)
-        ));
+        if($this->exists()){
+            $config = GridFieldConfig_RelationEditor::create();
+            $config->removeComponentsByType($config->getComponentByType('GridFieldAddNewButton'));
+            $characters = $this->getAvailableCharacters();
+            $config->getComponentByType('GridFieldAddExistingAutocompleter')->setSearchList($characters);
+            $config->addComponents(new GridFieldSortableRows('GroupOrder'));
+            $fields->addFieldToTab('Root.Main', GridField::create('Characters', 'Characters', $this->Characters(), $config));
+        }
+        else{
+            $fields->addFieldToTab('Root.Main', LiteralField::create('SavingTip', '<p class="message">You can add members to this group once its created.</p>'));
+        }
 
         return $fields;
     }
@@ -65,7 +67,7 @@ class WowGroup extends DataObject implements WowGroupInterface
             ->innerJoin('Member', '"Character"."MemberID" = "Member"."ID"')
             ->where('"Member"."Active" = 1');
 
-        if($membersJoined->count() > 0){
+        if(!empty($membersJoined)){
             $availableCharacters = $availableCharacters->where('"Character"."MemberID" NOT IN (' . implode(", ",$membersJoined->column("ID")) . ')');
         }
 

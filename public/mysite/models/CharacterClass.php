@@ -28,10 +28,15 @@ class CharacterClass extends DataObject
     {
         $fields = parent::getCMSFields();
         $fields->removeByName('CharacterSpecs');
-        $fields->addFieldsToTab('Root.Main', array(
-            TextField::create('Title', 'Class'),
-            GridField::create('CharacterSpecs', 'Specs', $this->CharacterSpecs(), GridFieldConfig_RelationEditor::create())
-        ));
+        $fields->addFieldToTab('Root.Main', TextField::create('Title', 'Class'));
+
+        if($this->exists()){
+            $config = GridFieldConfig_RelationEditor::create();
+            $fields->addFieldToTab('Root.Main', GridField::create('CharacterSpecs', 'Specs', $this->CharacterSpecs(), $config));
+        }
+        else{
+            $fields->addFieldToTab('Root.Main', LiteralField::create('SavingTip', '<p class="message">You can add specs to this class once its created.</p>'));
+        }
 
         return $fields;
     }
@@ -79,11 +84,4 @@ class CharacterSpec extends DataObject
 
         return $fields;
     }
-}
-
-class CharacterClassModelAdmin extends ModelAdmin
-{
-    private static $menu_title = 'Classes & Specs';
-    private static $url_segment = 'class-spec-admin';
-    private static $managed_models = array('CharacterClass', 'CharacterSpec');
 }

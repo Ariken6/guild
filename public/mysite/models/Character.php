@@ -50,10 +50,3 @@ class Character extends DataObject
         return '';
     }
 }
-
-class CharacterAdmin extends ModelAdmin
-{
-    private static $menu_title = 'Roster';
-    private static $url_segment = 'character-admin';
-    private static $managed_models = array('Character');
-}

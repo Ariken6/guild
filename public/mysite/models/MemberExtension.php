@@ -19,14 +19,19 @@ class MemberExtension extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
+        $fields->removeByName('Characters');
         $fields->addFieldsToTab('Root.Main', array(
             TextField::create('BattleTag', 'Battle Tag'),
             CheckboxField::create('Active', 'Active')
         ));
 
-        $fields->addFieldsToTab('Root.Characters', array(
-            LiteralField::create('MainCharacterTip', '<p class="message">Drag your main character to the top.</p>'),
-            GridField::create('Characters', 'Characters', $this->owner->Characters(), GridFieldConfig_RelationEditor::create()->addComponent(new GridFieldSortableRows('SortOrder'))),
-        ));
+        if($this->owner->exists()){
+            $config = GridFieldConfig_RelationEditor::create();
+            $config->addComponents(new GridFieldSortableRows('SortOrder'));
+            $fields->addFieldsToTab('Root.Characters', array(
+                LiteralField::create('MainCharacterTip', '<p class="message">Drag the main character to the top.</p>'),
+                GridField::create('Characters', 'Characters', $this->owner->Characters(), $config)
+            ));
+        }
     }
 }
