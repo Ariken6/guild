@@ -34,8 +34,8 @@ class WowGroup extends DataObject implements WowGroupInterface
 
         $config = GridFieldConfig_RelationEditor::create();
         $config->removeComponentsByType($config->getComponentByType('GridFieldAddNewButton'));
-        //TODO when a character is selected, other characters from the same player cannot be selected.
-        $config->getComponentByType('GridFieldAddExistingAutocompleter')->setSearchList(Character::get());
+        $characters = $this->getAvailableCharacters();
+        $config->getComponentByType('GridFieldAddExistingAutocompleter')->setSearchList($characters);
         $config->addComponents(new GridFieldSortableRows('GroupOrder'));
 
         $fields->addFieldsToTab('Root.Main', array(
@@ -44,6 +44,32 @@ class WowGroup extends DataObject implements WowGroupInterface
         ));
 
         return $fields;
+    }
+
+    public function getMembersJoined(){
+        $joinedCharacters = $this->Characters()->column('ID');
+        if(!empty($joinedCharacters)){
+            $members = Member::get()
+                ->innerJoin('Character', '"Character"."MemberID" = "Member"."ID"')
+                ->where('"Character"."ID" IN (' . implode(', ',$joinedCharacters) . ')');
+
+            return $members;
+        }
+
+        return null;
+    }
+
+    public function getAvailableCharacters(){
+        $membersJoined = $this->getMembersJoined();
+        $availableCharacters = Character::get()
+            ->innerJoin('Member', '"Character"."MemberID" = "Member"."ID"')
+            ->where('"Member"."Active" = 1');
+
+        if($membersJoined->count() > 0){
+            $availableCharacters = $availableCharacters->where('"Character"."MemberID" NOT IN (' . implode(", ",$membersJoined->column("ID")) . ')');
+        }
+
+        return $availableCharacters;
     }
 
     public function getMinGroupSize(){

@@ -29,12 +29,13 @@ class Character extends DataObject
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->removeByName(array('MemberID', 'SortOrder'));
+        $fields->removeByName('SortOrder');
         $fields->addFieldsToTab('Root.Main', array(
             TextField::create('Title', 'Name'),
             NumericField::create('ItemLevel', 'Item Level'),
             TextField::create('WowArmoryLink', 'WowArmory Link'),
             DropdownField::create('CharacterClassID', 'Class', CharacterClass::get()->map()),
+            DropdownField::create('MemberID', 'Member', Member::get()->map('ID', 'FirstName')),
         ));
 
         return $fields;
@@ -48,4 +49,11 @@ class Character extends DataObject
 
         return '';
     }
+}
+
+class CharacterAdmin extends ModelAdmin
+{
+    private static $menu_title = 'Roster';
+    private static $url_segment = 'character-admin';
+    private static $managed_models = array('Character');
 }

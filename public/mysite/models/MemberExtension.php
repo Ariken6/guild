@@ -9,7 +9,8 @@
 class MemberExtension extends DataExtension
 {
     private static $db = array(
-        'BattleTag' => 'Varchar(100)'
+        'BattleTag' => 'Varchar(100)',
+        'Active' => 'Boolean'
     );
 
     private static $has_many = array(
@@ -18,7 +19,10 @@ class MemberExtension extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
-        $fields->addFieldToTab('Root.Main', TextField::create('BattleTag', 'Battle Tag'));
+        $fields->addFieldsToTab('Root.Main', array(
+            TextField::create('BattleTag', 'Battle Tag'),
+            CheckboxField::create('Active', 'Active')
+        ));
 
         $fields->addFieldsToTab('Root.Characters', array(
             LiteralField::create('MainCharacterTip', '<p class="message">Drag your main character to the top.</p>'),
